@@ -29,7 +29,7 @@ void Merge(vector<int>&arr, int low, int mid, int high){
         j++;
     }
     
-    for(int idx=0;i<arr.size();idx++){
+    for(int idx=0;idx<temp.size();idx++){
         
         arr[low+idx]=temp[idx];
     }
