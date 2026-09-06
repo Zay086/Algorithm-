@@ -29,8 +29,7 @@ void GraphPrint(vector<int> vertecies[],int node){
 bool CycleDetection(vector<int> vertecies[], int total_nodes){
     
     vector<bool>visited(total_nodes, false);
-    vector<bool>parents(total_nodes, false);
-
+   
     for(int i=0;i<total_nodes;i++){
 
         if(!visited[i]){
@@ -38,7 +37,6 @@ bool CycleDetection(vector<int> vertecies[], int total_nodes){
             queue<pair<int,int>> temp;
             temp.push({i,-1});
             visited[i]=true;
-            parents[i]=true;
 
             while(!temp.empty()){
 
@@ -49,13 +47,12 @@ bool CycleDetection(vector<int> vertecies[], int total_nodes){
 
                     int neighbours=vertecies[current.first][j];
 
-                    if(visited[neighbours] && !parents[neighbours]){
+                    if(visited[neighbours] && neighbours!=current.second){
                         return true;
                     }
                     else if(!visited[neighbours]){
                         temp.push({neighbours, current.first});
                         visited[neighbours]=true;
-                        parents[neighbours]=true;
                     
                     }
                 }
